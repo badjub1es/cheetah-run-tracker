@@ -11,7 +11,7 @@ datasource db {
   // Further reading:
   // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
   // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
-  url      = env("DATABASE_URL")
+  url      = "mysql://zklk6ui2la0rj4ydenoo:pscale_pw_7fyGHu2c9ZjaGtLSfx13nE3nWzB9C371dsebU12QuSz@us-east.connect.psdb.cloud/habit-tracker-db?sslaccept=strict"
 }
 
 model Example {
