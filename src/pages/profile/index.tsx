@@ -1,9 +1,12 @@
 import { NextPage } from "next";
-import { getSession, GetSessionParams } from "next-auth/react";
+import { getSession, GetSessionParams, signOut } from "next-auth/react";
 
 const Profile: NextPage = () => {
     return (
-        <div>Profile</div>
+        <>
+            <div>Profile</div>
+            <div onClick={() => signOut()}>Sign out</div>
+        </>
     )
 }
 
