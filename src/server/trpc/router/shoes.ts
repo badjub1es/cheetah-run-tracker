@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { protectedProcedure, publicProcedure, router } from "../trpc";
+import { protectedProcedure, router } from "../trpc";
 
 export const shoesRouter = router({
     createShoe: protectedProcedure
@@ -28,7 +28,7 @@ export const shoesRouter = router({
             })
         }),
     getMessage: protectedProcedure
-        .query(({ ctx }) => {
+        .query(() => {
             return "message"
         })
 })
