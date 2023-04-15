@@ -55,6 +55,8 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  shoes         Shoe[]
+  workouts      Workout[]
 }
 
 model VerificationToken {
@@ -71,8 +73,8 @@ model Workout {
   totalDuration String?
   date          DateTime
   userId        String
-  shoeId?       String
-  shoe          Shoe   @relation(fields: [shoeId], references: [id], onDelete: Cascade)
+  shoeId        String?
+  shoe          Shoe?  @relation(fields: [shoeId], references: [id], onDelete: Cascade)
   user          User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
@@ -80,6 +82,7 @@ model Shoe {
   id     String @id @default(cuid())
   name   String
   userId String
+  workouts Workout[]
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   miles  Int    @default(0)
 }
