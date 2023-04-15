@@ -68,7 +68,7 @@ model VerificationToken {
 }
 
 model Workout {
-  id            String @id @default(cuid())
+  id            String @id @default(autoincrement())
   distance      String
   totalDuration String?
   date          DateTime
@@ -79,7 +79,7 @@ model Workout {
 }
 
 model Shoe {
-  id     String @id @default(cuid())
+  id     String @id @default(autoincrement())
   name   String
   userId String
   workouts Workout[]
