@@ -68,18 +68,18 @@ model VerificationToken {
 }
 
 model Workout {
-  id            String @id @default(autoincrement())
+  id            Int @id @default(autoincrement())
   distance      String
   totalDuration String?
   date          DateTime
   userId        String
-  shoeId        String?
+  shoeId        Int?
   shoe          Shoe?  @relation(fields: [shoeId], references: [id], onDelete: Cascade)
   user          User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Shoe {
-  id     String @id @default(autoincrement())
+  id     Int @id @default(autoincrement())
   name   String
   userId String
   workouts Workout[]
