@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { trpc } from "../../../utils/trpc";
 
 const AddShoeModalContainer: React.FC = () => {
@@ -9,16 +9,12 @@ const AddShoeModalContainer: React.FC = () => {
     const getmessage = trpc.shoes.getMessage.useQuery();
     const shoes = trpc.shoes.getAllShoes.useQuery();
 
-    const handleSaveShoe = () => {
-        createShoe.mutate({
+    const handleSaveShoe = async () => {
+       createShoe.mutate({
             name: shoeName,
             miles: previousMiles || 0
-        })
+        });
     };
-
-    // useEffect(() => {
-    //     console.log(shoes.data)
-    // }, [shoes])
 
     return (
         <>

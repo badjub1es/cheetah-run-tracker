@@ -1,6 +1,6 @@
-import { NextPage } from "next";
-import { getSession, GetSessionParams, signOut } from "next-auth/react";
 import { useState } from "react";
+import type { NextPage } from "next";
+import { getSession, GetSessionParams } from "next-auth/react";
 import AddShoeModalContainer from "./components/AddShoeModalContainer";
 import AddWorkoutModalContainer from "./components/AddWorkoutModalContainer";
 
@@ -17,9 +17,7 @@ const Profile: NextPage = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-[#b8e9cc] via-[#93dbac] to-[#328b21]">
-            <div>Profile</div>
-            <div onClick={() => signOut()}>Sign out</div>
+        <div>
             <div onClick={handleOpenWorkoutModal}>Add Workout</div>
             <div onClick={handleOpenShoeModal}>Add Shoe</div>
             {workoutModalIsOpen && <AddWorkoutModalContainer />}
