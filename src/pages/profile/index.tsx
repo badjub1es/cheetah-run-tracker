@@ -3,26 +3,27 @@ import type { NextPage } from "next";
 import { getSession, type GetSessionParams } from "next-auth/react";
 import AddShoeModalContainer from "./components/AddShoeModalContainer";
 import AddWorkoutModalContainer from "./components/AddWorkoutModalContainer";
+import ApplicationContainer from "../../components/Containers/ApplicationContainer";
 
 const Profile: NextPage = () => {
     const [workoutModalIsOpen, setWorkoutModalIsOpen] = useState(false);
     const [shoeModalIsOpen, setShoeModalIsOpen] = useState(false);
 
-    const handleOpenWorkoutModal = () => {
-        setWorkoutModalIsOpen((prev) => !prev);
-    };
+    // const handleOpenWorkoutModal = () => {
+    //     setWorkoutModalIsOpen((prev) => !prev);
+    // };
 
-    const handleOpenShoeModal = () => {
-        setShoeModalIsOpen((prev) => !prev);
-    };
+    // const handleOpenShoeModal = () => {
+    //     setShoeModalIsOpen((prev) => !prev);
+    // };
 
     return (
-        <div className="pl-20 pt-20">
-            <div onClick={handleOpenWorkoutModal}>Add Workout</div>
-            <div onClick={handleOpenShoeModal}>Add Shoe</div>
+        <ApplicationContainer>
+            {/* <div onClick={handleOpenWorkoutModal}>Add Workout</div> */}
+            {/* <div onClick={handleOpenShoeModal}>Add Shoe</div> */}
             {workoutModalIsOpen && <AddWorkoutModalContainer />}
             {shoeModalIsOpen && <AddShoeModalContainer />}
-        </div>
+        </ApplicationContainer>
     )
 }
 

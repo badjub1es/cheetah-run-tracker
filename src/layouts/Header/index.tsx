@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import AddItemButton from './components/AddItemButton';
 import HeaderMenuContainer from './components/HeaderMenuContainer';
@@ -7,6 +8,7 @@ import UserIconButton from './components/UserIconButton';
 
 const Header: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const router = useRouter();
 
     return (
         <div className="ml-5 mt-5 fixed">
@@ -20,7 +22,9 @@ const Header: React.FC = () => {
                             <LogoutButton />
                         </HeaderMenuContainer>
                     </div>
-                    <h1 className="text-1xl font-extrabold tracking-tight text-white sm:text-[2rem] align-middle">
+                    <h1
+                        onClick={() => router.push('/profile')}
+                        className="text-1xl font-extrabold tracking-tight text-white sm:text-[2rem] align-middle cursor-pointer hover:text-cyan-500">
                         cheetah
                     </h1>
                 </div>
