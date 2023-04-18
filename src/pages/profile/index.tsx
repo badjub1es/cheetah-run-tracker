@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { NextPage } from "next";
-import { getSession, GetSessionParams } from "next-auth/react";
+import { getSession, type GetSessionParams } from "next-auth/react";
 import AddShoeModalContainer from "./components/AddShoeModalContainer";
 import AddWorkoutModalContainer from "./components/AddWorkoutModalContainer";
 
@@ -17,7 +17,7 @@ const Profile: NextPage = () => {
     };
 
     return (
-        <div>
+        <div className="pl-20 pt-20">
             <div onClick={handleOpenWorkoutModal}>Add Workout</div>
             <div onClick={handleOpenShoeModal}>Add Shoe</div>
             {workoutModalIsOpen && <AddWorkoutModalContainer />}

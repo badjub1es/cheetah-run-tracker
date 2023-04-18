@@ -7,7 +7,7 @@ interface UserIconButtonProps {
 
 const UserIconButton: React.FC<UserIconButtonProps> = ({ setIsOpen }) => {
     return (
-        <div className="z-10" onClick={() => setIsOpen((prev) => !prev)}>
+        <div className="cursor-pointer z-10" onClick={() => setIsOpen((prev) => !prev)}>
             <UserIcon />
         </div>
     )

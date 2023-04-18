@@ -1,12 +1,9 @@
-import { type NextPage } from "next";
 import Head from "next/head";
+import Router from "next/router";
+import { type NextPage } from "next";
 import { signIn, signOut, useSession } from "next-auth/react";
 
-import { trpc } from "../utils/trpc";
-import Router from "next/router";
-
 const Home: NextPage = () => {
-  const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
   const { data: sessionData } = useSession();
 
   if (sessionData) {
@@ -27,9 +24,6 @@ const Home: NextPage = () => {
           </h1>
           <p className="font-bold text-4xl text-white m-0 p-0"> habit tracking</p>
           <div className="flex flex-col items-center gap-2">
-            <p className="text-2xl text-white ">
-              {hello.data ? hello.data.greeting : "Loading tRPC query..."}
-            </p>
             <AuthShowcase />
           </div>
         </div>
@@ -43,11 +37,6 @@ export default Home;
 const AuthShowcase: React.FC = () => {
   const { data: sessionData } = useSession();
 
-  const { data: secretMessage } = trpc.auth.getSecretMessage.useQuery(
-    undefined, // no input
-    { enabled: sessionData?.user !== undefined },
-  );
-
   const signInRedirect = () => {
     signIn('discord', { callbackUrl: '/profile' });
   }
@@ -56,7 +45,6 @@ const AuthShowcase: React.FC = () => {
     <div className="flex flex-col items-center justify-center gap-4">
       <p className="text-center text-2xl text-white">
         {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
-        {secretMessage && <span> - {secretMessage}</span>}
       </p>
       <button
         className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
