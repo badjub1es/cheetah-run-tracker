@@ -31,6 +31,7 @@ const Header: React.FC = () => {
           >
             cheetah
           </h1>
+          <LogoutButton />
         </div>
       </div>
     </div>
