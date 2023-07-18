@@ -17,7 +17,7 @@ const Home: NextPage = () => {
         <meta name="description" content="cheetah habit tracker" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex h-auto flex-col items-center justify-center rounded-md bg-neutral-200/30 shadow-md">
+      <main className="flex h-auto flex-col items-center justify-center rounded-3xl bg-neutral-200/30 shadow-md">
         <div className="container flex flex-col items-center justify-center gap-5 px-10 py-16">
           <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
             <span className="text-[#031D09]">cheetah</span>
