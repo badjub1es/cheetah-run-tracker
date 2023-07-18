@@ -22,7 +22,7 @@ const Home: NextPage = () => {
           <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
             <span className="text-[#031D09]">cheetah</span>
           </h1>
-          <p className="m-0 p-0 text-4xl font-bold text-white">
+          <p className="m-0 animate-color-wave p-0 text-4xl font-bold">
             {" "}
             habit tracking
           </p>
