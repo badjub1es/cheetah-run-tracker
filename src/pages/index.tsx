@@ -7,7 +7,7 @@ const Home: NextPage = () => {
   const { data: sessionData } = useSession();
 
   if (sessionData) {
-    Router.push('/profile');
+    Router.push("/profile");
   }
 
   return (
@@ -17,13 +17,16 @@ const Home: NextPage = () => {
         <meta name="description" content="cheetah habit tracker" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
-        <div className="container flex flex-col items-center justify-center gap-5 px-4 py-16 ">
+      <main className="flex h-auto flex-col items-center justify-center rounded-md bg-neutral-200/30 shadow-md">
+        <div className="container flex flex-col items-center justify-center gap-5 px-10 py-16">
           <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-             <span className="text-[hsl(280,100%,70%)]">cheetah</span>
+            <span className="text-[#031D09]">cheetah</span>
           </h1>
-          <p className="font-bold text-4xl text-white m-0 p-0"> habit tracking</p>
-          <div className="flex flex-col items-center gap-2">
+          <p className="m-0 p-0 text-4xl font-bold text-white">
+            {" "}
+            habit tracking
+          </p>
+          <div className="flex h-auto w-auto flex-col items-center gap-2">
             <AuthShowcase />
           </div>
         </div>
@@ -38,8 +41,8 @@ const AuthShowcase: React.FC = () => {
   const { data: sessionData } = useSession();
 
   const signInRedirect = () => {
-    signIn('discord', { callbackUrl: '/profile' });
-  }
+    signIn("discord", { callbackUrl: "/profile" });
+  };
 
   return (
     <div className="flex flex-col items-center justify-center gap-4">

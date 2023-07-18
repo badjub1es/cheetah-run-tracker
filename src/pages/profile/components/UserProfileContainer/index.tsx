@@ -7,12 +7,12 @@ const UserProfileContainer: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       setAnimate(true);
-    }, 1000);
+    }, 500);
   }, []);
 
   return (
     <div
-      className={`flex h-max w-[60vw] shrink-0 transform rounded-md bg-neutral-200/30 shadow-md transition-transform duration-1000 ${
+      className={`flex h-max w-[60vw] shrink-0 transform rounded-md bg-neutral-200/30 shadow-md transition-transform duration-500 ${
         animate ? "scale-100 opacity-100" : "scale-0 opacity-0"
       }`}
     >
