@@ -8,7 +8,7 @@ import LogoutButton from "./components/LogoutButton";
 // import UserIconButton from "./components/UserIconButton";
 
 const Header: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="fixed ml-5 mt-5">
