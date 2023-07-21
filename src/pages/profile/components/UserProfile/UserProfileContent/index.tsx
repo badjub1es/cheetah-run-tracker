@@ -6,13 +6,13 @@ const UserProfileContent: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       setAnimate(true);
-    }, 500);
+    }, 900);
   }, []);
 
   return (
     <div
-      className={`flex h-[50vh] min-w-[48rem] max-w-6xl shrink-0 transform rounded-b-3xl bg-neutral-200/30 shadow-md transition-transform duration-500 ${
-        animate ? "scale-100 opacity-100" : "scale-0 opacity-0"
+      className={`flex min-w-[48rem] max-w-6xl shrink-0 transform rounded-b-3xl bg-neutral-200/30 shadow-md duration-[900ms] ${
+        animate ? "h-[50vh] opacity-100" : "h-[0px]"
       }`}
     >
       content
