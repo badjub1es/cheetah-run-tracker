@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      color: {
+        'cheetah': '#328b21'
+      },
       keyframes: {
         colorWave: {
           '0%': { color: '#FFFFFF' },
