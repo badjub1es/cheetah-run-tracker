@@ -4,7 +4,7 @@ import { getSession, useSession, type GetSessionParams } from "next-auth/react";
 import AddShoeModalContainer from "./components/AddShoeModalContainer";
 import AddWorkoutModalContainer from "./components/AddWorkoutModalContainer";
 import ApplicationContainer from "../../components/Containers/ApplicationContainer";
-import UserProfileContainer from "./components/UserProfileContainer";
+import UserProfile from "./components/UserProfile";
 
 const Profile: NextPage = () => {
   const [workoutModalIsOpen, setWorkoutModalIsOpen] = useState(false);
@@ -22,7 +22,7 @@ const Profile: NextPage = () => {
 
   return (
     <ApplicationContainer>
-      <UserProfileContainer />
+      <UserProfile />
       {workoutModalIsOpen && <AddWorkoutModalContainer />}
       {shoeModalIsOpen && <AddShoeModalContainer />}
     </ApplicationContainer>
