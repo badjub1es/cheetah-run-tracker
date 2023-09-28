@@ -12,7 +12,12 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     session({ session, user }) {
       if (session.user) {
-        session.user.id = user.id;
+        if (user.id) {
+          session.user.id = user.id;
+        }
+        if (user.email) {
+          session.user.email = user.email;
+        }
       }
       return session;
     },
