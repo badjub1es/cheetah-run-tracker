@@ -7,7 +7,7 @@ const CheetahLogo: React.FC = ({}) => {
   return (
     <h1
       onClick={() => router.push(EnRoutePaths.profile)}
-      className="text-1xl cursor-pointer align-middle font-extrabold tracking-tight text-white hover:text-cyan-500 sm:text-[2rem]"
+      className="text-1xl cursor-pointer align-middle font-extrabold tracking-tight text-white sm:text-[2rem]"
     >
       cheetah
     </h1>

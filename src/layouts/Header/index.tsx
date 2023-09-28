@@ -23,7 +23,7 @@ const Header: React.FC = () => {
               <LogoutButton />
             </HeaderMenuContainer>
           </div> */}
-          <div className="flex flex-row items-center justify-center gap-3">
+          <div className="text-white flex flex-row items-center justify-center gap-3">
             <CheetahLogo />
             <LogoutButton />
           </div>
