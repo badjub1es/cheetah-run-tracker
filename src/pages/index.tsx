@@ -2,6 +2,7 @@ import Head from "next/head";
 import Router from "next/router";
 import { type NextPage } from "next";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { redirect } from "next/dist/server/api-utils";
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession();
@@ -44,6 +45,10 @@ const AuthShowcase: React.FC = () => {
     signIn("discord", { callbackUrl: "/profile" });
   };
 
+  const googleSignInRedirect = () => {
+    signIn("google", { callbackUrl: "/profile" });
+  };
+
   return (
     <div className="flex flex-col items-center justify-center gap-4">
       <p className="text-center text-2xl text-white">
@@ -54,6 +59,12 @@ const AuthShowcase: React.FC = () => {
         onClick={sessionData ? () => signOut() : () => signInRedirect()}
       >
         {sessionData ? "Sign out" : "Sign in"}
+      </button>
+      <button
+        className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
+        onClick={sessionData ? () => signOut() : () => googleSignInRedirect()}
+      >
+        {sessionData ? "Sign out" : "Sign in with google"}
       </button>
     </div>
   );
