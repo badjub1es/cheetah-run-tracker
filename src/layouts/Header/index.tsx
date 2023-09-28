@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+// import React from "react";
+import React from "react";
 import CheetahLogo from "@components/CheetahLogo";
 import LogoutButton from "./components/LogoutButton";
+import { useSession } from "next-auth/react";
 // import AddItemButton from "./components/AddItemButton";
 // import HeaderMenuContainer from "./components/HeaderMenuContainer";
 // import ProfileButton from "./components/ProfileButton";
@@ -9,6 +11,14 @@ import LogoutButton from "./components/LogoutButton";
 
 const Header: React.FC = () => {
   // const [isOpen, setIsOpen] = useState(false);
+  const [authorized, setAuthorized] = React.useState(false);
+  const session = useSession();
+
+  React.useEffect(() => {
+    if (session?.status === "authenticated") {
+      setAuthorized(true);
+    }
+  }, [session]);
 
   return (
     <div className="fixed ml-5 mt-5">
@@ -23,9 +33,9 @@ const Header: React.FC = () => {
               <LogoutButton />
             </HeaderMenuContainer>
           </div> */}
-          <div className="text-white flex flex-row items-center justify-center gap-3">
+          <div className="flex flex-row items-center justify-center gap-3 text-white">
             <CheetahLogo />
-            <LogoutButton />
+            {authorized && <LogoutButton />}
           </div>
         </div>
       </div>
