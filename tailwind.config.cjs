@@ -4,7 +4,10 @@ module.exports = {
   theme: {
     extend: {
       color: {
-        'cheetah': '#328b21'
+        'cheetah': '#328b21',
+        'asphalt': '#2C2D28',
+        'slate': '#BABAA8',
+        'ice': '#90D8D4'
       },
       keyframes: {
         colorWave: {
