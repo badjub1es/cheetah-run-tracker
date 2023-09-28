@@ -64,7 +64,7 @@ const AuthShowcase: React.FC = () => {
         className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
         onClick={sessionData ? () => signOut() : () => googleSignInRedirect()}
       >
-        {sessionData ? "Sign out" : "Sign in with google"}
+        {sessionData ? "Sign out" : "Sign in with Google"}
       </button>
     </div>
   );
