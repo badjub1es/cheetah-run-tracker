@@ -1,4 +1,3 @@
-// import React from "react";
 import React from "react";
 import CheetahLogo from "@components/CheetahLogo";
 import LogoutButton from "./components/LogoutButton";

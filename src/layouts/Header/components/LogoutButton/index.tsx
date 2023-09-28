@@ -1,19 +1,11 @@
 import React from "react";
-import { signOut, useSession } from "next-auth/react";
-import LogoutIcon from "../../../../components/Icons/LogoutIcon";
+import LogoutIcon from "@components/Icons/LogoutIcon";
+import { signOut } from "next-auth/react";
 
-const LogoutButton: React.FC = () => {
-  const session = useSession();
-
-  if (session?.status === "unauthenticated") {
-    return <></>;
-  }
-
-  return (
-    <div className="cursor-pointer" onClick={() => signOut()}>
-      <LogoutIcon />
-    </div>
-  );
-};
+const LogoutButton: React.FC = () => (
+  <div className="cursor-pointer" onClick={() => signOut()}>
+    <LogoutIcon />
+  </div>
+);
 
 export default LogoutButton;
