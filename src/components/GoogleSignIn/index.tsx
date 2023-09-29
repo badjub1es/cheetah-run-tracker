@@ -8,22 +8,15 @@ interface GoogleSignInProps {
   height: number;
 }
 
-const GoogleSignIn: React.FC<GoogleSignInProps> = ({ width, height }) => {
-  const [hover, setHover] = React.useState(false);
-  return (
-    <button
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      onClick={() => signInRedirect(AuthProvider.GOOGLE)}
-    >
-      <Image
-        alt="google-sign-in"
-        src={hover ? "/googleSignInFocus.png" : "/googleSignIn.png"}
-        height={height}
-        width={width}
-      />
-    </button>
-  );
-};
+const GoogleSignIn: React.FC<GoogleSignInProps> = ({ width, height }) => (
+  <button onClick={() => signInRedirect(AuthProvider.GOOGLE)}>
+    <Image
+      alt="google-sign-in"
+      src={"/googleSignIn.png"}
+      height={height}
+      width={width}
+    />
+  </button>
+);
 
 export default GoogleSignIn;
