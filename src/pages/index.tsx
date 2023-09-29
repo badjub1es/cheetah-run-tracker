@@ -5,6 +5,7 @@ import GoogleSignIn from "@components/GoogleSignIn";
 import { AuthProvider } from "@customTypes/authProviders";
 import { type NextPage } from "next";
 import { signIn, useSession } from "next-auth/react";
+import DiscordSignIn from "@components/DiscordSignIn";
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession();
@@ -52,6 +53,7 @@ const AuthShowcase: React.FC = () => {
       >
         {sessionData ? "Sign out" : "Sign in"}
       </button> */}
+      {!sessionData && <DiscordSignIn width={200} height={100} />}
       {!sessionData && <GoogleSignIn width={200} height={100} />}
     </div>
   );
