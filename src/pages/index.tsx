@@ -1,8 +1,9 @@
+import React from "react";
 import Head from "next/head";
+import Image from "next/image";
 import Router from "next/router";
 import { type NextPage } from "next";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { redirect } from "next/dist/server/api-utils";
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession();
@@ -40,6 +41,7 @@ export default Home;
 
 const AuthShowcase: React.FC = () => {
   const { data: sessionData } = useSession();
+  const [hover, setHover] = React.useState(false);
 
   const signInRedirect = () => {
     signIn("discord", { callbackUrl: "/profile" });
@@ -61,10 +63,18 @@ const AuthShowcase: React.FC = () => {
         {sessionData ? "Sign out" : "Sign in"}
       </button>
       <button
-        className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
-        onClick={sessionData ? () => signOut() : () => googleSignInRedirect()}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        onClick={() => googleSignInRedirect()}
       >
-        {sessionData ? "Sign out" : "Sign in with Google"}
+        {!sessionData && (
+          <Image
+            alt="google-sign-in"
+            src={hover ? "/googleSignInFocus.png" : "/googleSignIn.png"}
+            width="200"
+            height="100"
+          />
+        )}
       </button>
     </div>
   );
