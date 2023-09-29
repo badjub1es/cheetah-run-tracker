@@ -2,8 +2,9 @@ import React from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Router from "next/router";
+import { AuthProvider } from "@customTypes/authProviders";
 import { type NextPage } from "next";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession();
@@ -43,29 +44,22 @@ const AuthShowcase: React.FC = () => {
   const { data: sessionData } = useSession();
   const [hover, setHover] = React.useState(false);
 
-  const signInRedirect = () => {
-    signIn("discord", { callbackUrl: "/profile" });
-  };
-
-  const googleSignInRedirect = () => {
-    signIn("google", { callbackUrl: "/profile" });
+  const signInRedirect = (provider: AuthProvider) => {
+    signIn(provider, { callbackUrl: "/profile" });
   };
 
   return (
     <div className="flex flex-col items-center justify-center gap-4">
-      <p className="text-center text-2xl text-white">
-        {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
-      </p>
       <button
         className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
-        onClick={sessionData ? () => signOut() : () => signInRedirect()}
+        onClick={() => signInRedirect(AuthProvider.DISCORD)}
       >
         {sessionData ? "Sign out" : "Sign in"}
       </button>
       <button
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        onClick={() => googleSignInRedirect()}
+        onClick={() => signInRedirect(AuthProvider.GOOGLE)}
       >
         {!sessionData && (
           <Image
