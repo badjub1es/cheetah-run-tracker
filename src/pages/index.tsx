@@ -1,10 +1,10 @@
 import React from "react";
 import Head from "next/head";
-import Image from "next/image";
 import Router from "next/router";
 import { AuthProvider } from "@customTypes/authProviders";
 import { type NextPage } from "next";
 import { signIn, useSession } from "next-auth/react";
+import GoogleSignIn from "@components/GoogleSignIn";
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession();
@@ -62,12 +62,7 @@ const AuthShowcase: React.FC = () => {
         onClick={() => signInRedirect(AuthProvider.GOOGLE)}
       >
         {!sessionData && (
-          <Image
-            alt="google-sign-in"
-            src={hover ? "/googleSignInFocus.png" : "/googleSignIn.png"}
-            width="200"
-            height="100"
-          />
+          <GoogleSignIn width={200} height={100} hover={hover} />
         )}
       </button>
     </div>

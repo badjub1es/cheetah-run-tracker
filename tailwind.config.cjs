@@ -7,7 +7,9 @@ module.exports = {
         'cheetah': '#328b21',
         'asphalt': '#0c0a09',
         'slate': '#BABAA8',
-        'ice': '#90D8D4'
+        'ice': '#90D8D4',
+        'blurple': '#5865F2',
+        'white': '#FFFFFF'
       },
       keyframes: {
         colorWave: {
