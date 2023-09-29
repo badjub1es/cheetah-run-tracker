@@ -1,10 +1,10 @@
 import React from "react";
 import Head from "next/head";
 import Router from "next/router";
+import GoogleSignIn from "@components/GoogleSignIn";
 import { AuthProvider } from "@customTypes/authProviders";
 import { type NextPage } from "next";
 import { signIn, useSession } from "next-auth/react";
-import GoogleSignIn from "@components/GoogleSignIn";
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession();
@@ -44,27 +44,15 @@ const AuthShowcase: React.FC = () => {
   const { data: sessionData } = useSession();
   const [hover, setHover] = React.useState(false);
 
-  const signInRedirect = (provider: AuthProvider) => {
-    signIn(provider, { callbackUrl: "/profile" });
-  };
-
   return (
     <div className="flex flex-col items-center justify-center gap-4">
-      <button
+      {/* <button
         className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
         onClick={() => signInRedirect(AuthProvider.DISCORD)}
       >
         {sessionData ? "Sign out" : "Sign in"}
-      </button>
-      <button
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-        onClick={() => signInRedirect(AuthProvider.GOOGLE)}
-      >
-        {!sessionData && (
-          <GoogleSignIn width={200} height={100} hover={hover} />
-        )}
-      </button>
+      </button> */}
+      {!sessionData && <GoogleSignIn width={200} height={100} />}
     </div>
   );
 };
