@@ -8,7 +8,10 @@ interface GoogleSignInProps {
   height: number;
 }
 
-const GoogleSignIn: React.FC<GoogleSignInProps> = ({ width, height }) => (
+const GoogleSignIn: React.FC<GoogleSignInProps> = ({
+  width = 200,
+  height = 100,
+}) => (
   <button onClick={() => signInRedirect(AuthProvider.GOOGLE)}>
     <Image
       alt="google-sign-in"
