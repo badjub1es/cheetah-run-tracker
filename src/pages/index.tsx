@@ -2,10 +2,9 @@ import React from "react";
 import Head from "next/head";
 import Router from "next/router";
 import GoogleSignIn from "@components/GoogleSignIn";
-import { AuthProvider } from "@customTypes/authProviders";
-import { type NextPage } from "next";
-import { signIn, useSession } from "next-auth/react";
 import DiscordSignIn from "@components/DiscordSignIn";
+import { useSession } from "next-auth/react";
+import { type NextPage } from "next";
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession();
@@ -41,20 +40,9 @@ const Home: NextPage = () => {
 
 export default Home;
 
-const AuthShowcase: React.FC = () => {
-  const { data: sessionData } = useSession();
-  const [hover, setHover] = React.useState(false);
-
-  return (
-    <div className="flex flex-col items-center justify-center gap-4">
-      {/* <button
-        className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
-        onClick={() => signInRedirect(AuthProvider.DISCORD)}
-      >
-        {sessionData ? "Sign out" : "Sign in"}
-      </button> */}
-      {!sessionData && <DiscordSignIn width={200} height={100} />}
-      {!sessionData && <GoogleSignIn width={200} height={100} />}
-    </div>
-  );
-};
+const AuthShowcase: React.FC = () => (
+  <div className="flex flex-col items-center justify-center gap-4">
+    <DiscordSignIn width={200} height={100} />
+    <GoogleSignIn width={200} height={100} />
+  </div>
+);
