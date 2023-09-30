@@ -67,6 +67,6 @@ export default Home;
 const AuthShowcase: React.FC = () => (
   <div className="flex flex-col items-center justify-center gap-4">
     <DiscordSignIn width={200} height={50} />
-    <GoogleSignIn width={205} height={100} />
+    <GoogleSignIn width={200} height={50} />
   </div>
 );

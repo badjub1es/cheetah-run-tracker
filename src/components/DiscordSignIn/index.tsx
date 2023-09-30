@@ -10,15 +10,9 @@ interface DiscordSignInProps {
 
 const DiscordSignIn: React.FC<DiscordSignInProps> = ({ width, height }) => (
   <button onClick={() => signInRedirect(AuthProvider.DISCORD)}>
-    <Image
-      alt="discord-sign-in"
-      src={"/discordSignIn.png"}
-      width={width}
-      height={height}
-    />
-    {/* <div
+    <div
       style={{ width: `${width}px` }}
-      className={`flex gap-[19px] overflow-hidden rounded-sm bg-blurple px-3 py-[9px] text-[14px] text-base max-w-[${width}px] h-[${height}px] text-white`}
+      className={`flex gap-[19px] overflow-hidden rounded-sm bg-blurple px-3 py-[9px] text-[14px] text-base shadow max-w-[${width}px] h-[${height}px] text-white`}
     >
       <Image
         alt="discord-logo"
@@ -27,7 +21,7 @@ const DiscordSignIn: React.FC<DiscordSignInProps> = ({ width, height }) => (
         height={23}
       />
       <p className="flex-nowrap">Sign in with Discord</p>
-    </div> */}
+    </div>
   </button>
 );
 
