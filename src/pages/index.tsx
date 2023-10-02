@@ -14,8 +14,8 @@ const Home: NextPage = () => {
     "set goals",
     "visualize data",
     "pet a cat",
+    "walk a dog",
     "say hello",
-    "eat a popsicle",
   ];
   const [subHeader, setSubHeader] = React.useState(subHeadingArray[0]);
 
