@@ -13,7 +13,7 @@ const UserProfileContainer: React.FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <div
-      className={`flex h-max w-[70vw] min-w-[48rem] max-w-6xl shrink-0 transform flex-row rounded-t-3xl bg-neutral-200/30 px-10 py-10 shadow-md transition-transform duration-500 ${
+      className={`flex h-max w-[70vw] min-w-[48rem] max-w-6xl shrink-0 transform flex-row rounded-t-3xl bg-neutral-200/30 py-10 shadow-md transition-transform duration-500 ${
         animate ? "scale-100 opacity-100" : "scale-0 opacity-0"
       }`}
     >

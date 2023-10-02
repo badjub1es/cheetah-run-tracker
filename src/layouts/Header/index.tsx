@@ -20,7 +20,7 @@ const Header: React.FC = () => {
   }, [session]);
 
   return (
-    <div className="fixed ml-5 mt-5">
+    <div className="fixed mt-5 px-[16vw]">
       <div className="relative flex flex-col items-center justify-center">
         <div className="flex items-start gap-2">
           {/* <div className="flex flex-col items-center justify-center">
