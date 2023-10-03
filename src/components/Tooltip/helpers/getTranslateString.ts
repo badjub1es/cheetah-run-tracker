@@ -8,7 +8,7 @@ import type { Direction } from "@customTypes/Direction";
  * @param {number} childWidth Width of child element
  * @returns {string} string
  */
-export const getTranslateString = (direction: Direction, childHeight: number = 0, childWidth: number = 0): string => {
+export const getTranslateString = (direction: Direction, childHeight = 0, childWidth = 0): string => {
     switch (direction) {
         case ("top"):
             return `translateY(-${childHeight / 2}px)`;
