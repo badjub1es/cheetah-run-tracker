@@ -1,4 +1,4 @@
-import { Direction } from "@customTypes/Direction";
+import type { Direction } from "@customTypes/Direction";
 
 export const getTranslateString = (direction: Direction, childHeight: number = 0, childWidth: number = 0): string => {
     switch (direction) {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Direction } from "@customTypes/Direction";
+import type { Direction } from "@customTypes/Direction";
 import { getTranslateString } from "./helpers/getTranslateString";
 
 interface TooltipProps extends React.PropsWithChildren {
