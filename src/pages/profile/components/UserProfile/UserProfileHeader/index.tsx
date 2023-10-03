@@ -9,7 +9,6 @@ const UserProfileHeader: React.FC = () => {
     <div className="flex w-full flex-col">
       <div className="ml-10 flex h-28 items-center">
         <UserProfileImage src={session.data?.user?.image || ""} />
-
         <UserProfileHeaderName name={session.data?.user?.name} />
       </div>
     </div>
