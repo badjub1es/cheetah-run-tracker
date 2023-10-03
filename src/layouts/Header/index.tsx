@@ -1,8 +1,8 @@
 import React from "react";
+import Tooltip from "@components/Tooltip";
 import CheetahLogo from "@components/CheetahLogo";
 import LogoutButton from "./components/LogoutButton";
 import { useSession } from "next-auth/react";
-import Tooltip from "@components/Tooltip";
 // import AddItemButton from "./components/AddItemButton";
 // import HeaderMenuContainer from "./components/HeaderMenuContainer";
 // import ProfileButton from "./components/ProfileButton";
