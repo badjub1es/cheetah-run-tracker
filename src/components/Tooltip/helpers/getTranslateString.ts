@@ -1,6 +1,8 @@
 import type { Direction } from "@customTypes/Direction";
 
 /**
+ * Helper function to determine translation string for Tooltip styling
+ * 
  * @param {Direction} direction Direction tooltip should render
  * @param {number} childHeight Height of attached child element
  * @param {number} childWidth Width of child element
