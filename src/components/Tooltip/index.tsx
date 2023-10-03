@@ -8,12 +8,20 @@ interface TooltipProps extends React.PropsWithChildren {
   direction?: Direction;
 }
 
+/**
+ * Tooltip UI component
+ *
+ * @param TooltipProps props
+ * @param {string} props.text Text to display in Tooltip component
+ * @param {textColor} props.textColor Text color to display in Tooltip component
+ * @param {Direction} props.direction Direction of children to display Tooltip component
+ */
 const Tooltip: React.FC<TooltipProps> = ({
   children,
   text,
   direction = "top",
   textColor = "white",
-}) => {
+}: TooltipProps) => {
   const [hover, setHover] = React.useState(false);
   const [childHeight, setChildHeight] = React.useState<number>(0);
   const [childWidth, setChildWidth] = React.useState<number>(0);
