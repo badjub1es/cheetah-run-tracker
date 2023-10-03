@@ -2,6 +2,7 @@ import React from "react";
 import CheetahLogo from "@components/CheetahLogo";
 import LogoutButton from "./components/LogoutButton";
 import { useSession } from "next-auth/react";
+import Tooltip from "@components/Tooltip";
 // import AddItemButton from "./components/AddItemButton";
 // import HeaderMenuContainer from "./components/HeaderMenuContainer";
 // import ProfileButton from "./components/ProfileButton";
@@ -34,7 +35,11 @@ const Header: React.FC = () => {
           </div> */}
           <div className="flex flex-row items-center justify-center gap-3 text-white">
             <CheetahLogo />
-            {authorized && <LogoutButton />}
+            {authorized && (
+              <Tooltip direction="bottom" textColor="white" text="Logout">
+                <LogoutButton />
+              </Tooltip>
+            )}
           </div>
         </div>
       </div>
