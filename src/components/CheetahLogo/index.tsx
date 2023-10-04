@@ -13,11 +13,10 @@ const CheetahLogo: React.FC = ({}) => {
       >
         cheetah
       </h1>
-      <Image
+      <img
+        src="./cheetahLogoBgRemoved.png"
         alt="cheetah-logo"
-        src={"/cheetahLogoBgRemoved.png"}
-        height={25}
-        width={25}
+        className="h-[15px] sm:h-[25px]"
       />
     </>
   );
