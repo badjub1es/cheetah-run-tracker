@@ -34,6 +34,13 @@ const Home: NextPage = () => {
     };
   }, []);
 
+  React.useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "scroll";
+    };
+  }, []);
+
   if (sessionData) {
     Router.push("/profile");
   }
