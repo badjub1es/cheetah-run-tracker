@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        'landing-image': "url('/cheetahBackground.png')"
+      },
       colors: {
         'cheetah': '#328b21',
         'asphalt': '#0c0a09',
