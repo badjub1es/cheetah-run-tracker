@@ -11,6 +11,7 @@ module.exports = {
         'asphalt': '#0c0a09',
         'slate': '#BABAA8',
         'ice': '#90D8D4',
+        'frost': '#2bf1ff',
         'blurple': '#5865F2',
         'white': '#FFFFFF'
       },
