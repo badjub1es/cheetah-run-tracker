@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'landing-image': "url('/cheetahBackground.png')"
+        'landing-image': "url('/cheetahBg.png')"
       },
       colors: {
         'cheetah': '#328b21',
