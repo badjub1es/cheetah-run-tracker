@@ -57,7 +57,7 @@ const Home: NextPage = () => {
           <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
             <span className="text-white">cheetah</span>
           </h1>
-          <p className="m-0 animate-[bounce_1.2s_ease-in-out_infinite] p-0 text-4xl font-bold text-ice">
+          <p className="m-0 animate-[bounce_1.2s_ease-in-out_infinite] p-0 text-4xl font-bold text-frost">
             {subHeader}
           </p>
           <div className="flex h-auto w-auto flex-col items-center gap-2">
