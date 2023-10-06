@@ -5,6 +5,7 @@ import GoogleSignIn from "@components/GoogleSignIn";
 import DiscordSignIn from "@components/DiscordSignIn";
 import { useSession } from "next-auth/react";
 import { type NextPage } from "next";
+import EmailSignIn from "@components/EmailSignIn";
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession();
@@ -75,5 +76,6 @@ const AuthShowcase: React.FC = () => (
   <div className="flex flex-col items-center justify-center gap-4">
     <DiscordSignIn width={200} height={50} />
     <GoogleSignIn width={200} height={50} />
+    <EmailSignIn width={200} height={50} />
   </div>
 );
