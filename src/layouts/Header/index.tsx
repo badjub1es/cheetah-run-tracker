@@ -2,12 +2,12 @@ import React from "react";
 import Tooltip from "@components/Tooltip";
 import CheetahLogo from "@components/CheetahLogo";
 import LogoutButton from "./components/LogoutButton";
-import { useSession } from "next-auth/react";
 import MenuDropDown from "./components/MenuDropDown";
+import { useSession } from "next-auth/react";
 
 const Header: React.FC = () => {
-  const [authorized, setAuthorized] = React.useState(false);
   const session = useSession();
+  const [authorized, setAuthorized] = React.useState(false);
 
   React.useEffect(() => {
     if (session?.status === "authenticated") {
@@ -26,7 +26,7 @@ const Header: React.FC = () => {
             </Tooltip>
           )}
         </div>
-        <MenuDropDown />
+        {authorized && <MenuDropDown />}
       </div>
     </div>
   );
