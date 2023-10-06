@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { NextPage } from "next";
-import { getSession, useSession, type GetSessionParams } from "next-auth/react";
+import { getSession, type GetSessionParams } from "next-auth/react";
 import AddShoeModalContainer from "./components/AddShoeModalContainer";
 import AddWorkoutModalContainer from "./components/AddWorkoutModalContainer";
 import ApplicationContainer from "../../components/Containers/ApplicationContainer";
@@ -9,8 +9,6 @@ import UserProfile from "./components/UserProfile";
 const Profile: NextPage = () => {
   const [workoutModalIsOpen, setWorkoutModalIsOpen] = useState(false);
   const [shoeModalIsOpen, setShoeModalIsOpen] = useState(false);
-
-  const session = useSession();
 
   // const handleOpenWorkoutModal = () => {
   //     setWorkoutModalIsOpen((prev) => !prev);
