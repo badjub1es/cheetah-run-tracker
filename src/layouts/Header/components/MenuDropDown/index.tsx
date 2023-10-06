@@ -1,9 +1,7 @@
 import { useSession } from "next-auth/react";
 import UserProfileImage from "@components/UserProfileImage";
 
-interface MenuDropDownProps {}
-
-const MenuDropDown: React.FC<MenuDropDownProps> = () => {
+const MenuDropDown: React.FC = () => {
   const session = useSession();
   return (
     <div className="h-max w-max cursor-pointer rounded-md border-2 border-solid border-white bg-frost bg-white p-2">
