@@ -21,7 +21,7 @@ const SignUp: NextPage = () => {
 
   const handleLogin = async () => {
     signIn("credentials", {
-      email: "some_email4@gmail.com",
+      email: "some_email3@gmail.com",
       password: "sTr!O1ngpass",
       callbackUrl: "/home",
     });
