@@ -10,7 +10,7 @@ import { RequestMethod } from "@customTypes/request/RequestMethod";
 
 export const authOptions: NextAuthOptions = {
   callbacks: {
-    session({ session, user }) {
+    session({ session, user, token }) {
       if (session.user) {
         if (user?.id) {
           session.user.id = user.id;
@@ -18,14 +18,13 @@ export const authOptions: NextAuthOptions = {
         if (user?.email) {
           session.user.email = user.email;
         }
+        if (token?.sub) {
+          session.user.id = token.sub
+        }
       }
       return session;
     },
-    async jwt({ token, account, user }) {
-      if (user) {
-        console.log("user", user, account);
-      }
-      console.log(token);
+    async jwt({ token }) {
       return token;
    },
   },
@@ -69,7 +68,7 @@ export const authOptions: NextAuthOptions = {
           );
 
           const user = await res.json();
-
+            console.log('USER IN', user)
           if (res.ok && user) {
             return user;
           } else {
