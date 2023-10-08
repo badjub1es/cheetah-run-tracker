@@ -24,7 +24,6 @@ const loginUserHandler = async (req: NextApiRequest, res: NextApiResponse) => {
             select: {
                 id: true,
                 email: true,
-                password: true,
                 image: true
             }
         });
