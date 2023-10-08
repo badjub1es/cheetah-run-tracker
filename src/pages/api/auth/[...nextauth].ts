@@ -57,7 +57,7 @@ export const authOptions: NextAuthOptions = {
             password: credentials.password
           };
 
-          const res = await fetch(`${process.env.NEXTAUTH_URL}/api/user/auth`,
+          const res = await fetch(`https://cheetah.vercel.app/api/user/auth`,
             {
               method: RequestMethod.POST,
               body: JSON.stringify(userCredentials),
