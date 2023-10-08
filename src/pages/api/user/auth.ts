@@ -24,17 +24,18 @@ const loginUserHandler = async (req: NextApiRequest, res: NextApiResponse) => {
             select: {
                 id: true,
                 email: true,
-                // password: true,
+                password: true,
                 image: true
             }
         });
-
-        // if (user && user.password === hashPassword(password)) {
-        //     delete user["password"];
-        //     return res.status(200).json(user);
-        // } else {
-        //     return res.status(401).json({ message: 'Invalid credentials' });
-        // }
+        
+        const userTyped: { id: string, email: string | null, password: string | null, image: string | null } | null = user;
+        if (userTyped && userTyped.password === hashPassword(password)) {
+            userTyped.password = null;
+            return res.status(200).json(user);
+        } else {
+            return res.status(401).json({ message: 'Invalid credentials' });
+        }
     } catch (error) {
         // handle error gracefully
     }

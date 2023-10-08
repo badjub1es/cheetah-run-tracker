@@ -12,16 +12,28 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     session({ session, user }) {
       if (session.user) {
-        if (user.id) {
+        if (user?.id) {
           session.user.id = user.id;
         }
-        if (user.email) {
+        if (user?.email) {
           session.user.email = user.email;
         }
       }
       return session;
     },
+    async jwt({ token, account, user }) {
+      if (user) {
+        console.log("user", user, account);
+      }
+      console.log(token);
+      return token;
+   },
   },
+  jwt: {
+    secret: process.env.NEXTAUTH_SECRET,
+    maxAge: 60 * 60 * 24 * 30,
+  },
+  session: { strategy: "jwt", maxAge: 24 * 60 * 60 },
   adapter: PrismaAdapter(prisma),
   providers: [
     DiscordProvider({
@@ -46,7 +58,7 @@ export const authOptions: NextAuthOptions = {
             password: credentials.password
           };
 
-          const res = await fetch(`${process.env.NEXTAUTH_URL}/api/user/login`,
+          const res = await fetch(`${process.env.NEXTAUTH_URL}/api/user/auth`,
             {
               method: RequestMethod.POST,
               body: JSON.stringify(userCredentials),
