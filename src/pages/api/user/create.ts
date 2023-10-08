@@ -20,7 +20,7 @@ export const hashPassword = (password: string) => {
 const createUserHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     const errors = [];
     const { email, password } = req.body;
-
+ 
     // validate email address
     if (!isEmail(email)) {
         errors.push("Valid email");
@@ -31,7 +31,7 @@ const createUserHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         errors.push("Strong password required");
     }
 
-    // If errors, return 400 response
+    // // If errors, return 400 response
     if (errors.length > 0) {
         return res.status(400).json({ errors });
     }
