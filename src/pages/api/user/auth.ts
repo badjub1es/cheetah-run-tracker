@@ -24,16 +24,17 @@ const loginUserHandler = async (req: NextApiRequest, res: NextApiResponse) => {
             select: {
                 id: true,
                 email: true,
+                // password: true,
                 image: true
             }
         });
 
-        if (user && user.password === hashPassword(password)) {
-            delete user["password"];
-            return res.status(200).json(user);
-        } else {
-            return res.status(401).json({ message: 'Invalid credentials' });
-        }
+        // if (user && user.password === hashPassword(password)) {
+        //     delete user["password"];
+        //     return res.status(200).json(user);
+        // } else {
+        //     return res.status(401).json({ message: 'Invalid credentials' });
+        // }
     } catch (error) {
         // handle error gracefully
     }
