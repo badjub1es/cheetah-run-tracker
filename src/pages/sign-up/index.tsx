@@ -1,9 +1,9 @@
 import React from "react";
-import { signIn } from "next-auth/react";
-import type { NextPage } from "next";
-import { validateStrongPassword } from "utils/validateStrongPassword";
 import isEmail from "validator/lib/isEmail";
+import type { NextPage } from "next";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
+import { validateStrongPassword } from "utils/validateStrongPassword";
 
 const SignUp: NextPage = () => {
   const router = useRouter();
