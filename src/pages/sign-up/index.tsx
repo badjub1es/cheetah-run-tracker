@@ -75,9 +75,7 @@ const SignUp: NextPage = () => {
     password: string,
     verifiedPassword: string
   ): boolean => {
-    let isValidForm = true;
     const values = new Set(Object.values(errors));
-    console.log(values.has(true));
     return values.has(true);
   };
 
