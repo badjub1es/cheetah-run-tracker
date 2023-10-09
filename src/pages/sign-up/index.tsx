@@ -2,12 +2,9 @@ import React from "react";
 import isEmail from "validator/lib/isEmail";
 import type { NextPage } from "next";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/router";
 import { validateStrongPassword } from "utils/validateStrongPassword";
 
 const SignUp: NextPage = () => {
-  const router = useRouter();
-
   const [email, setEmail] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
   const [verifiedPassword, setVerifiedPassword] = React.useState("");
