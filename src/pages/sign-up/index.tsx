@@ -20,7 +20,7 @@ const SignUp: NextPage = () => {
   });
 
   const handleCreateAccount = async (email: string, password: string) => {
-    const res = await fetch(`http://localhost:3000/api/user/create`, {
+    const res = await fetch(`${process.env.BASE_URL}/api/user/create`, {
       method: "POST",
       body: JSON.stringify({
         email,
