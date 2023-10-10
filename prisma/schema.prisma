@@ -53,7 +53,7 @@ model User {
   password       String?
   email          String?   @unique
   emailVerified  DateTime?
-  image          String?
+  image          String?   @default("https://i.postimg.cc/zBZrVxBB/default-User.png")
   accounts       Account[]
   sessions       Session[]
   shoes          Shoe[]
