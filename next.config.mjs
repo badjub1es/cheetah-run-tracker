@@ -13,5 +13,11 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  env: {
+    // @ts-ignore
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+    // @ts-ignore
+    BASE_URL: process.env.BASE_URL
+  }
 };
 export default config;
