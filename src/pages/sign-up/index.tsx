@@ -112,6 +112,16 @@ const SignUp: NextPage = () => {
           {hasSubmitted && errors?.invalidPassword && (
             <p className="text-red-700">Password sucks</p>
           )}
+          <div className="rounded-lg border bg-neutral-200/60 p-5 text-sm text-asphalt">
+            <p>Password must contain</p>
+            <ul className="list-disc px-6">
+              <li>more than 7 characters</li>
+              <li>one or more uppercase characters</li>
+              <li>one or more lowercase characters</li>
+              <li>one or more numeric values</li>
+              <li>one or more special characters, i.e. $%$!</li>
+            </ul>
+          </div>
           <label
             htmlFor="verify-password"
             className="block text-sm font-medium text-gray-900 dark:text-white"
