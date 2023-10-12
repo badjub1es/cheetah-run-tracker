@@ -1,4 +1,8 @@
-const regExp = /(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/g
+const regExp = /(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+const capReg = /[A-Z]/;
+const lowReg = /[a-z]/;
+const numReg = /\d/;
+const specReg = /[^a-zA-Z0-9\s]/;
 
 /**
  *  Validates password strength
@@ -13,3 +17,10 @@ const regExp = /(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-
  */
 export const validateStrongPassword = (password: string): boolean => regExp.test(password);
 
+export const hasUppercase = (password: string): boolean => capReg.test(password);
+
+export const hasLowercase = (password: string): boolean => lowReg.test(password);
+
+export const hasNumeric = (password: string): boolean => numReg.test(password);
+
+export const hasSpecial = (password: string): boolean => specReg.test(password);
