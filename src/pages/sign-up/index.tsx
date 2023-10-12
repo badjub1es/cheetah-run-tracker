@@ -1,9 +1,16 @@
 import React from "react";
+import Check from "@components/Icons/Check";
 import isEmail from "validator/lib/isEmail";
 import type { NextPage } from "next";
 import { signIn } from "next-auth/react";
 import { createAccount } from "data/fetch";
-import { validateStrongPassword } from "utils/validateStrongPassword";
+import {
+  hasLowercase,
+  hasNumeric,
+  hasSpecial,
+  hasUppercase,
+  validateStrongPassword,
+} from "utils/validateStrongPassword";
 
 const SignUp: NextPage = () => {
   const [email, setEmail] = React.useState<string>("");
@@ -11,6 +18,7 @@ const SignUp: NextPage = () => {
   const [verifiedPassword, setVerifiedPassword] = React.useState("");
   const [isValidForm, setIsValidForm] = React.useState(false);
   const [hasSubmitted, setHasSubmitted] = React.useState(false);
+  const [passwordIsValid, setPasswordIsValid] = React.useState(false);
   const [errors, setErrors] = React.useState({
     invalidPassword: false,
     invalidEmail: false,
@@ -73,6 +81,10 @@ const SignUp: NextPage = () => {
     setIsValidForm(validateForm(email, password, verifiedPassword));
   }, [email, password, verifiedPassword]);
 
+  React.useEffect(() => {
+    setPasswordIsValid(validateStrongPassword(password));
+  }, [password]);
+
   return (
     <div className="flex h-auto flex-col justify-center rounded-3xl bg-neutral-200/30 shadow-md">
       <div className="flex flex-col items-center justify-center gap-5 px-10 py-10">
@@ -112,14 +124,33 @@ const SignUp: NextPage = () => {
           {hasSubmitted && errors?.invalidPassword && (
             <p className="text-red-700">Password sucks</p>
           )}
-          <div className="rounded-lg border bg-neutral-200/60 p-5 text-sm text-asphalt">
+          <div
+            className={`rounded-lg border ${
+              passwordIsValid ? "border-green-500" : "border-white"
+            } bg-neutral-200/60 p-5 text-sm text-asphalt`}
+          >
             <p>Password must contain</p>
             <ul className="list-disc px-6">
-              <li>more than 7 characters</li>
-              <li>one or more uppercase characters</li>
-              <li>one or more lowercase characters</li>
-              <li>one or more numeric values</li>
-              <li>one or more special characters, i.e. $%$!</li>
+              <div className="flex">
+                <li>more than 7 characters</li>
+                {password?.length > 7 && <Check />}
+              </div>
+              <div className="flex">
+                <li>one or more uppercase characters</li>
+                {hasUppercase(password) && <Check />}
+              </div>
+              <div className="flex">
+                <li>one or more lowercase characters</li>
+                {hasLowercase(password) && <Check />}
+              </div>
+              <div className="flex">
+                <li>one or more numeric values</li>
+                {hasNumeric(password) && <Check />}
+              </div>
+              <div className="flex">
+                <li>one or more special characters, i.e. $%$!</li>
+                {hasSpecial(password) && <Check />}
+              </div>
             </ul>
           </div>
           <label
