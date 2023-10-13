@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 
 const Header: React.FC = () => {
   const session = useSession();
+
   const [authorized, setAuthorized] = React.useState(false);
 
   React.useEffect(() => {
