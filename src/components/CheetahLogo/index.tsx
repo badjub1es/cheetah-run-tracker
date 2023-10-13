@@ -1,5 +1,5 @@
 import Image from "next/image";
-import EnRoutePaths from "@customTypes/routes/EnRoutePaths";
+import RoutePaths from "@customTypes/routes/RoutePaths";
 import { useRouter } from "next/router";
 
 const CheetahLogo: React.FC = ({}) => {
@@ -8,7 +8,7 @@ const CheetahLogo: React.FC = ({}) => {
   return (
     <>
       <h1
-        onClick={() => router.push(EnRoutePaths.profile)}
+        onClick={() => router.push(RoutePaths.profile)}
         className="text-1xl cursor-pointer align-middle font-extrabold tracking-tight text-white sm:text-[2rem]"
       >
         cheetah
