@@ -28,14 +28,6 @@ const SignUp: NextPage = () => {
     missingVerifiedPassword: false,
   });
 
-  const handleLogin = async (email: string, password: string) => {
-    signIn("credentials", {
-      email,
-      password,
-      callbackUrl: "/home",
-    });
-  };
-
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const email = event.target.value;
     setEmail(email);
