@@ -57,23 +57,22 @@ export const authOptions: NextAuthOptions = {
             password: credentials.password
           };
 
-          const res = await fetch(`https://cheetah.vercel.app/api/user/auth`,
-            {
-              method: RequestMethod.POST,
-              body: JSON.stringify(userCredentials),
-              headers: {
-                "Content-Type": "application/json"
+            const res = await fetch(`${process.env.BASE_URL}/api/user/auth`,
+              {
+                method: RequestMethod.POST,
+                body: JSON.stringify(userCredentials),
+                headers: {
+                  "Content-Type": "application/json"
+                }
               }
-            }
-          );
+            );
 
-          const user = await res.json();
-            console.log('USER IN', user)
-          if (res.ok && user) {
-            return user;
-          } else {
-            return null;
-          }
+            const user = await res.json();
+            if (res.ok && user) {
+              return user;
+            } else {
+              return null;
+            }
         } else {
           return null;
         }

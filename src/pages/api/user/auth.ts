@@ -28,7 +28,7 @@ const loginUserHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                 image: true
             }
         });
-        
+
         const userTyped: { id: string, email: string | null, password: string | null, image: string | null } | null = user;
         if (userTyped && userTyped.password === hashPassword(password)) {
             userTyped.password = null;
