@@ -1,8 +1,8 @@
 import React from "react";
 import Check from "@components/Icons/Check";
 import isEmail from "validator/lib/isEmail";
+import LoadingSpinner from "@components/Icons/LoadingSpinner";
 import type { NextPage } from "next";
-import { signIn } from "next-auth/react";
 import { createAccount } from "data/fetch";
 import {
   hasLowercase,
@@ -14,6 +14,7 @@ import {
 
 const SignUp: NextPage = () => {
   const [email, setEmail] = React.useState<string>("");
+  const [loading, setLoading] = React.useState(false);
   const [password, setPassword] = React.useState<string>("");
   const [verifiedPassword, setVerifiedPassword] = React.useState("");
   const [isValidForm, setIsValidForm] = React.useState(false);
@@ -58,6 +59,7 @@ const SignUp: NextPage = () => {
     setHasSubmitted(true);
     if (isValidForm) {
       createAccount(email, password);
+      setLoading(true);
     }
   };
 
@@ -76,6 +78,10 @@ const SignUp: NextPage = () => {
   React.useEffect(() => {
     setPasswordIsValid(validateStrongPassword(password));
   }, [password]);
+
+  if (loading) {
+    return <LoadingSpinner />
+  }
 
   return (
     <div className="flex h-auto flex-col justify-center rounded-3xl bg-neutral-200/30 shadow-md">
