@@ -1,8 +1,8 @@
 import React from "react";
 import Check from "@components/Icons/Check";
 import isEmail from "validator/lib/isEmail";
+import LoadingSpinner from "@components/Icons/LoadingSpinner";
 import type { NextPage } from "next";
-import { signIn } from "next-auth/react";
 import { createAccount } from "data/fetch";
 import {
   hasLowercase,
@@ -11,7 +11,6 @@ import {
   hasUppercase,
   validateStrongPassword,
 } from "utils/validateStrongPassword";
-import LoadingSpinner from "@components/Icons/LoadingSpinner";
 
 const SignUp: NextPage = () => {
   const [email, setEmail] = React.useState<string>("");
