@@ -43,7 +43,7 @@ const Home: NextPage = () => {
   }, []);
 
   if (sessionData) {
-    Router.push("/profile");
+    Router.push("/home");
   }
 
   return (
