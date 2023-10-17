@@ -1,4 +1,5 @@
 enum RoutePaths {
+    home = '/home',
     profile = '/profile',
     profileCreate = '/profile/create',
     emailSignIn = '/sign-in',

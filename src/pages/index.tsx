@@ -6,6 +6,7 @@ import DiscordSignIn from "@components/DiscordSignIn";
 import { useSession } from "next-auth/react";
 import { type NextPage } from "next";
 import EmailSignIn from "@components/EmailSignIn";
+import RoutePaths from "@customTypes/routes/RoutePaths";
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession();
@@ -43,7 +44,7 @@ const Home: NextPage = () => {
   }, []);
 
   if (sessionData) {
-    Router.push("/home");
+    Router.push(RoutePaths.home);
   }
 
   return (
