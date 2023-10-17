@@ -1,11 +1,12 @@
 import React from "react";
 import Head from "next/head";
 import Router from "next/router";
+import RoutePaths from "@customTypes/routes/RoutePaths";
+import EmailSignIn from "@components/EmailSignIn";
 import GoogleSignIn from "@components/GoogleSignIn";
 import DiscordSignIn from "@components/DiscordSignIn";
 import { useSession } from "next-auth/react";
 import { type NextPage } from "next";
-import EmailSignIn from "@components/EmailSignIn";
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession();
@@ -43,7 +44,7 @@ const Home: NextPage = () => {
   }, []);
 
   if (sessionData) {
-    Router.push("/profile");
+    Router.push(RoutePaths.home);
   }
 
   return (
