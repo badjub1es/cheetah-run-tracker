@@ -1,12 +1,12 @@
 import React from "react";
 import Head from "next/head";
 import Router from "next/router";
+import RoutePaths from "@customTypes/routes/RoutePaths";
+import EmailSignIn from "@components/EmailSignIn";
 import GoogleSignIn from "@components/GoogleSignIn";
 import DiscordSignIn from "@components/DiscordSignIn";
 import { useSession } from "next-auth/react";
 import { type NextPage } from "next";
-import EmailSignIn from "@components/EmailSignIn";
-import RoutePaths from "@customTypes/routes/RoutePaths";
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession();
