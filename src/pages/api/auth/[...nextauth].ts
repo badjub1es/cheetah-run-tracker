@@ -7,7 +7,6 @@ import { prisma } from "../../../server/db/client";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { RequestMethod } from "@customTypes/request/RequestMethod";
 
-
 export const authOptions: NextAuthOptions = {
   callbacks: {
     session({ session, user, token }) {
@@ -19,14 +18,14 @@ export const authOptions: NextAuthOptions = {
           session.user.email = user.email;
         }
         if (token?.sub) {
-          session.user.id = token.sub
+          session.user.id = token.sub;
         }
       }
       return session;
     },
     async jwt({ token }) {
       return token;
-   },
+    },
   },
   jwt: {
     secret: process.env.NEXTAUTH_SECRET,
@@ -41,43 +40,43 @@ export const authOptions: NextAuthOptions = {
     }),
     GoogleProvider({
       clientId: env.GOOGLE_CLIENT_ID,
-      clientSecret: env.GOOGLE_CLIENT_SECRET
+      clientSecret: env.GOOGLE_CLIENT_SECRET,
     }),
     CredentialsProvider({
-      id: 'credentials',
-      name: 'Credentials',
+      id: "credentials",
+      name: "Credentials",
       credentials: {
-        email: { label: 'Email', type: 'text' },
-        password: { label: 'Password', type: 'password' }
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
         if (credentials != null) {
           const userCredentials = {
             email: credentials.email,
-            password: credentials.password
+            password: credentials.password,
           };
 
-            const res = await fetch(`${process.env.BASE_URL}/api/user/auth`,
-              {
-                method: RequestMethod.POST,
-                body: JSON.stringify(userCredentials),
-                headers: {
-                  "Content-Type": "application/json"
-                }
-              }
-            );
+          const res = await fetch(`${process.env.BASE_URL}/api/user/auth`, {
+            method: RequestMethod.POST,
+            body: JSON.stringify(userCredentials),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
 
-            const user = await res.json();
-            if (res.ok && user) {
-              return user;
-            } else {
-              return null;
-            }
+          const user = await res.json();
+
+          if (res.status === 401) {
+            throw Error("Invalid credentials.");
+          }
+          if (res.ok && user) {
+            return user;
+          }
         } else {
           return null;
         }
-      }
-    })
+      },
+    }),
     // ...add more providers here
   ],
 };
