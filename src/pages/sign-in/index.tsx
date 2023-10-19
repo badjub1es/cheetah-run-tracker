@@ -26,10 +26,10 @@ const SignIn: NextPage = () => {
       redirect: false,
       email,
       password,
-      callbackUrl: "/home",
+      callbackUrl: RoutePaths.home,
     }).then((res) => {
       if (res?.ok) {
-        router.push("/home");
+        router.push(RoutePaths.home);
       } else {
         setError(true);
       }
