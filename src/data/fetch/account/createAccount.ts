@@ -19,6 +19,6 @@ export const createAccount = async (email: string, password: string) => {
         callbackUrl: "/home",
       });
     } else {
-      // display error messaging
+      return res;
     }
   };
