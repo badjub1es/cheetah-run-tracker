@@ -12,22 +12,25 @@ import {
   validateStrongPassword,
 } from "utils/validateStrongPassword";
 
+const errorInit = {
+  invalidPassword: false,
+  invalidEmail: false,
+  mismatchPassword: false,
+  missingEmail: false,
+  missingPassword: false,
+  missingVerifiedPassword: false,
+};
+
 const SignUp: NextPage = () => {
   const [email, setEmail] = React.useState<string>("");
+  const [errors, setErrors] = React.useState(errorInit);
   const [loading, setLoading] = React.useState(false);
   const [password, setPassword] = React.useState<string>("");
-  const [verifiedPassword, setVerifiedPassword] = React.useState("");
+  const [fetchError, setFetchError] = React.useState("");
   const [isValidForm, setIsValidForm] = React.useState(false);
   const [hasSubmitted, setHasSubmitted] = React.useState(false);
   const [passwordIsValid, setPasswordIsValid] = React.useState(false);
-  const [errors, setErrors] = React.useState({
-    invalidPassword: false,
-    invalidEmail: false,
-    mismatchPassword: false,
-    missingEmail: false,
-    missingPassword: false,
-    missingVerifiedPassword: false,
-  });
+  const [verifiedPassword, setVerifiedPassword] = React.useState("");
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const email = event.target.value;
@@ -46,20 +49,29 @@ const SignUp: NextPage = () => {
     setVerifiedPassword(verifiedPassword);
   };
 
-  const validateForm = (
-    email: string,
-    password: string,
-    verifiedPassword: string
-  ): boolean => {
+  const validateForm = (): boolean => {
     const values = new Set(Object.values(errors));
     return values.has(true);
   };
 
-  const submitCreate = () => {
+  const resetInputs = React.useCallback(() => {
+    setEmail("");
+    setPassword("");
+    setVerifiedPassword("");
+    setHasSubmitted(false);
+  }, []);
+
+  const submitCreate = async () => {
     setHasSubmitted(true);
     if (isValidForm) {
-      createAccount(email, password);
       setLoading(true);
+      const res = await createAccount(email, password);
+      if (res?.status !== 200) {
+        const data = await res?.json();
+        setLoading(false);
+        setFetchError(data.body);
+        resetInputs();
+      }
     }
   };
 
@@ -72,7 +84,7 @@ const SignUp: NextPage = () => {
       missingPassword: password == "",
       missingVerifiedPassword: verifiedPassword == "",
     });
-    setIsValidForm(validateForm(email, password, verifiedPassword));
+    setIsValidForm(validateForm());
   }, [email, password, verifiedPassword]);
 
   React.useEffect(() => {
@@ -80,13 +92,14 @@ const SignUp: NextPage = () => {
   }, [password]);
 
   if (loading) {
-    return <LoadingSpinner />
+    return <LoadingSpinner />;
   }
 
   return (
     <div className="flex h-auto flex-col justify-center rounded-3xl bg-neutral-200/30 shadow-md">
       <div className="flex flex-col items-center justify-center gap-5 px-10 py-10">
         <h1 className="font-extrabold text-white">Sign up</h1>
+        {fetchError && <p className="text-red-500">{fetchError}</p>}
         <div className="flex flex-col gap-3">
           <label
             htmlFor="email"
