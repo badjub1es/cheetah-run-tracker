@@ -37,7 +37,7 @@ const SignIn: NextPage = () => {
   };
 
   return (
-    <div className="flex h-auto flex-col justify-center rounded-3xl bg-neutral-200/30 shadow-md">
+    <div className="flex h-auto flex-col justify-center self-center justify-self-center rounded-3xl bg-neutral-200/30 shadow-md">
       <div className="flex flex-col items-center justify-center gap-5 px-10 py-10">
         <h1 className="font-extrabold text-white">Welcome back</h1>
         {error && <p className="text-red-500">Invalid credentials</p>}
