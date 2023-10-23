@@ -1,8 +1,13 @@
 import { type NextPage } from "next";
 import { type GetSessionParams, getSession } from "next-auth/react";
+import Greeting from "./Greeting";
 
 const Home: NextPage = () => {
-  return <>Home</>;
+  return (
+    <div className="w-100 h-100">
+      <Greeting />
+    </div>
+  );
 };
 
 export default Home;
