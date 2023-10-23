@@ -2,7 +2,7 @@ import React from "react";
 
 const ModuleContainer: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
-    <div className="w-100 h-100 rounded-lg bg-neutral-200/75 p-2">
+    <div className="inline-block rounded-lg bg-neutral-200/75 p-3">
       {children}
     </div>
   );

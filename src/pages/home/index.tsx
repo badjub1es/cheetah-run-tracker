@@ -4,7 +4,7 @@ import Greeting from "./Greeting";
 
 const Home: NextPage = () => {
   return (
-    <div className="w-100 h-100">
+    <div className="h-auto w-auto p-24">
       <Greeting />
     </div>
   );

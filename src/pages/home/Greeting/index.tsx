@@ -6,7 +6,9 @@ const Greeting: React.FC = () => {
   const session = useSession();
   return (
     <ModuleContainer>
-      <p>Welcome, {session.data?.user?.name}</p>
+      <p className="inline-block font-bold">
+        Welcome, {session.data?.user?.name}
+      </p>
     </ModuleContainer>
   );
 };
