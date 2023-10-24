@@ -66,7 +66,7 @@ const SignUp: NextPage = () => {
     if (isValidForm) {
       setLoading(true);
       const res = await createAccount(email, password);
-      if (res?.status !== 200) {
+      if (res.status !== 201) {
         const data = await res?.json();
         setLoading(false);
         setFetchError(data.body);

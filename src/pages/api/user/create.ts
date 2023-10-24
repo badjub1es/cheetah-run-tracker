@@ -4,6 +4,9 @@ import { prisma } from "server/db/client";
 import { RequestMethod } from "@customTypes/request/RequestMethod";
 import { validateStrongPassword } from "utils/validateStrongPassword";
 import { NextApiRequest, NextApiResponse } from "next";
+import { db } from "db";
+import { users } from "db/schema/schema";
+import { eq } from "drizzle-orm";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === RequestMethod.POST) {
@@ -36,20 +39,18 @@ const createUserHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400).json({ errors });
   }
 
-  const user = await prisma.user.findUnique({
-    where: { email },
-  });
+  const user = await db.select().from(users).where(eq(users.email, email));
 
-  if (user != null) {
+  if (user[0] != null) {
     return res.status(409).json({
       body: "User with that email already exists",
     });
   }
 
   try {
-    const user = await prisma.user.create({
-      data: { ...req.body, password: hashPassword(password) },
-    });
+    const user = await db
+      .insert(users)
+      .values({ ...req.body, password: hashPassword(password) });
     return res.status(201).json({ user });
   } catch (error) {
     return error;
