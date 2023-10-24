@@ -23,7 +23,7 @@ export const hashPassword = (password: string) => {
 const createUserHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const errors = [];
   const { email, password } = req.body;
-  console.log(req.body);
+
   // validate email address
   if (!isEmail(email)) {
     errors.push("Valid email");
