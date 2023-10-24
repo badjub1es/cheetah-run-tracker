@@ -8,7 +8,6 @@ import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { db } from "db";
 import { Adapter } from "next-auth/adapters";
 
-
 export const authOptions: NextAuthOptions = {
   callbacks: {
     session({ session, user, token }) {
@@ -29,7 +28,7 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
   },
-  adapter: DrizzleAdapter(db) as Adapter<boolean>,
+  adapter: DrizzleAdapter(db),
   jwt: {
     secret: process.env.NEXTAUTH_SECRET,
     maxAge: 60 * 60 * 24 * 30,

@@ -4,6 +4,7 @@ import {
   mysqlTable,
   primaryKey,
   varchar,
+  text,
 } from "drizzle-orm/mysql-core";
 import type { AdapterAccount } from "@auth/core/adapters";
 import { relations, sql } from "drizzle-orm";
@@ -21,13 +22,17 @@ export const users = mysqlTable("user", {
     mode: "date",
     fsp: 3,
   }).defaultNow(),
-  image: varchar("image", { length: 255 }),
+  image: varchar("image", { length: 255 }).default(
+    "https://i.postimg.cc/zBZrVxBB/default-User.png"
+  ),
 });
 
 export const accounts = mysqlTable(
   "account",
   {
-    userId: varchar("userId", { length: 255 }).notNull(),
+    userId: varchar("userId", { length: 255 })
+      .notNull()
+      .default(sql`(uuid())`),
     type: varchar("type", { length: 255 })
       .$type<AdapterAccount["type"]>()
       .notNull(),
@@ -38,7 +43,7 @@ export const accounts = mysqlTable(
     expires_at: int("expires_at"),
     token_type: varchar("token_type", { length: 255 }),
     scope: varchar("scope", { length: 255 }),
-    id_token: varchar("id_token", { length: 255 }),
+    id_token: text("id_token"),
     session_state: varchar("session_state", { length: 255 }),
   },
   (account) => ({
