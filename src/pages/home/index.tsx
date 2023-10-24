@@ -4,7 +4,7 @@ import Greeting from "./Greeting";
 
 const Home: NextPage = () => {
   return (
-    <div className="h-auto w-auto p-24">
+    <div className="h-auto w-auto py-24 px-[16vw]">
       <Greeting />
     </div>
   );
