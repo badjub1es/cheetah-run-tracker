@@ -3,9 +3,11 @@ import DiscordProvider from "next-auth/providers/discord";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { env } from "../../../env/server.mjs";
-import { prisma } from "../../../server/db/client";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { RequestMethod } from "@customTypes/request/RequestMethod";
+import { DrizzleAdapter } from "@auth/drizzle-adapter";
+import { db } from "db";
+import { Adapter } from "next-auth/adapters";
+
 
 export const authOptions: NextAuthOptions = {
   callbacks: {
@@ -27,12 +29,12 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
   },
+  adapter: DrizzleAdapter(db) as Adapter<boolean>,
   jwt: {
     secret: process.env.NEXTAUTH_SECRET,
     maxAge: 60 * 60 * 24 * 30,
   },
   session: { strategy: "jwt", maxAge: 24 * 60 * 60 },
-  adapter: PrismaAdapter(prisma),
   providers: [
     DiscordProvider({
       clientId: env.DISCORD_CLIENT_ID,
