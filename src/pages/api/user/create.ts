@@ -1,12 +1,11 @@
+import bcrypt from "bcrypt";
 import isEmail from "validator/lib/isEmail";
-import { SHA256 } from "crypto-js";
-import { prisma } from "server/db/client";
+import { db } from "db";
+import { eq } from "drizzle-orm";
+import { users } from "db/schema/schema";
 import { RequestMethod } from "@customTypes/request/RequestMethod";
 import { validateStrongPassword } from "utils/validateStrongPassword";
 import { NextApiRequest, NextApiResponse } from "next";
-import { db } from "db";
-import { users } from "db/schema/schema";
-import { eq } from "drizzle-orm";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === RequestMethod.POST) {
@@ -16,8 +15,17 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export const hashPassword = (password: string) => {
-  return SHA256(password).toString();
+export const hashPassword = (password: string | null) => {
+  if (password) {
+    bcrypt.hash(password, 10, function (err, hash) {
+      if (!err) {
+        return hash;
+      } else {
+        throw err;
+      }
+    });
+  }
+  return null;
 };
 
 const createUserHandler = async (req: NextApiRequest, res: NextApiResponse) => {
