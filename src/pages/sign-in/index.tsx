@@ -36,6 +36,12 @@ const SignIn: NextPage = () => {
     });
   };
 
+  const handleSubmit = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleLogin(email, password);
+    }
+  };
+
   return (
     <div className="flex h-auto flex-col justify-center self-center justify-self-center rounded-3xl bg-neutral-200/30 shadow-md">
       <div className="flex flex-col items-center justify-center gap-5 px-10 py-10">
@@ -51,6 +57,7 @@ const SignIn: NextPage = () => {
           <input
             type="text"
             id="email"
+            onKeyDown={handleSubmit}
             onChange={handleEmailChange}
             className="block w-full rounded-lg border border-frost bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-frost focus:ring-frost dark:border-frost dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-frost dark:focus:ring-frost"
             placeholder="Enter email"
@@ -65,6 +72,7 @@ const SignIn: NextPage = () => {
           <input
             type="password"
             id="password"
+            onKeyDown={handleSubmit}
             onChange={handlePasswordChange}
             className="block w-full rounded-lg border border-frost bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-frost focus:ring-frost dark:border-frost dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-frost dark:focus:ring-frost"
             placeholder="Enter password"
