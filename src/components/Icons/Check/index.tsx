@@ -1,5 +1,5 @@
 const Check = () => (
-  <div className="align-center flex justify-center">
+  <div className="flex items-center justify-center">
     <svg
       className="h-4 w-4 text-green-500"
       width="24"
