@@ -118,7 +118,7 @@ const SignUp: NextPage = () => {
             id="email"
             onKeyDown={handleSubmit}
             onChange={handleEmailChange}
-            className="block w-full rounded-lg border border-frost bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-frost focus:ring-frost dark:border-frost dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-frost dark:focus:ring-frost"
+            className="block w-full rounded-lg border bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-frost focus:outline-none dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
             placeholder="Enter email"
             required
           />
@@ -136,7 +136,7 @@ const SignUp: NextPage = () => {
             id="password"
             onKeyDown={handleSubmit}
             onChange={handlePasswordChange}
-            className="block w-full rounded-lg border border-frost bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-frost focus:ring-frost dark:border-frost dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-frost dark:focus:ring-frost"
+            className="block w-full rounded-lg border bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-frost focus:outline-none dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
             placeholder="Enter password"
             required
           />
@@ -183,7 +183,7 @@ const SignUp: NextPage = () => {
             id="verify-password"
             onKeyDown={handleSubmit}
             onChange={handleVerifyPasswordChange}
-            className="block w-full rounded-lg border border-frost bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-frost focus:ring-frost dark:border-frost dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-frost dark:focus:ring-frost"
+            className="block w-full rounded-lg border bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-frost focus:outline-none dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
             placeholder="Verify password"
             required
           />
