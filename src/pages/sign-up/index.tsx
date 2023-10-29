@@ -98,7 +98,11 @@ const SignUp: NextPage = () => {
   }, [password]);
 
   if (loading) {
-    return <LoadingSpinner />;
+    return (
+      <div className="flex items-center justify-center">
+        <LoadingSpinner />;
+      </div>
+    );
   }
 
   return (
