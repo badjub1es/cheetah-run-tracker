@@ -27,6 +27,10 @@ export const users = mysqlTable("user", {
   ),
 });
 
+export const usersRelations = relations(users, ({ many }) => ({
+  shoes: many(shoes),
+}));
+
 export const accounts = mysqlTable(
   "account",
   {

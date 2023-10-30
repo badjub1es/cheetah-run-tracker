@@ -3,7 +3,7 @@ import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 import { type Session } from "next-auth";
 
 import { getServerAuthSession } from "../common/get-server-auth-session";
-import { prisma } from "../db/client";
+import { db as drizzle } from "db";
 
 type CreateContextOptions = {
   session: Session | null;
@@ -17,7 +17,7 @@ type CreateContextOptions = {
 export const createContextInner = async (opts: CreateContextOptions) => {
   return {
     session: opts.session,
-    prisma,
+    drizzle,
   };
 };
 
