@@ -94,6 +94,7 @@ export const shoes = mysqlTable("shoe", {
     .default(sql`(uuid())`),
   distance: int("distance").notNull().default(0),
   name: varchar("name", { length: 255 }).notNull(),
+  color: varchar("color", { length: 7 }).default("#000000"),
 });
 
 export const shoesRelation = relations(shoes, ({ one }) => ({
