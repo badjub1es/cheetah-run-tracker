@@ -5,23 +5,23 @@ const AddShoeModalContainer: React.FC = () => {
     const [shoeName, setShoeName] = useState<string>('');
     const [previousMiles, setPreviousMiles] = useState<number>();
 
-    const createShoe = trpc.shoes.createShoe.useMutation();
+    // const createShoe = trpc.shoes.createShoe.useMutation();
     const getmessage = trpc.shoes.getMessage.useQuery();
     const shoes = trpc.shoes.getAllShoes.useQuery();
 
-    const handleSaveShoe = async () => {
-       createShoe.mutate({
-            name: shoeName,
-            miles: previousMiles || 0
-        });
-    };
+    // const handleSaveShoe = async () => {
+    //    createShoe.mutate({
+    //         name: shoeName,
+    //         miles: previousMiles || 0
+    //     });
+    // };
 
     return (
         <>
             <div className="container flex flex-col">
                 <input type="text" placeholder="Shoe name" value={shoeName} onChange={(e) => setShoeName(e.target.value)} />
                 <input type="number" placeholder="Previous miles" value={previousMiles} onChange={(e) => setPreviousMiles(Number(e.target.value))}/>
-                <button onClick={handleSaveShoe}>Save shoe</button>
+                {/* <button onClick={handleSaveShoe}>Save shoe</button> */}
                 <div>{getmessage.data ? getmessage.data : 'loading'}</div>
                 {shoes.data?.map((shoe, index) => (
                     <div key={index}>{shoe.name}</div>
