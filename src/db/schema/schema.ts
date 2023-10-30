@@ -82,3 +82,23 @@ export const verificationTokens = mysqlTable(
     compoundKey: primaryKey(vt.identifier, vt.token),
   })
 );
+
+export const shoes = mysqlTable("shoe", {
+  id: varchar("id", { length: 255 })
+    .unique()
+    .notNull()
+    .primaryKey()
+    .default(sql`(uuid())`),
+  userId: varchar("userId", { length: 255 })
+    .notNull()
+    .default(sql`(uuid())`),
+  distance: int("distance").notNull().default(0),
+  name: varchar("name", { length: 255 }).notNull(),
+});
+
+export const shoesRelation = relations(shoes, ({ one }) => ({
+  user: one(users, {
+    fields: [shoes.userId],
+    references: [users.id],
+  }),
+}));
