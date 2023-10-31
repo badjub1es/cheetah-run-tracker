@@ -5,9 +5,13 @@ import Shoes from "./Shoes";
 
 const Home: NextPage = () => {
   return (
-    <div className="h-auto w-auto py-24 px-[16vw]">
-      <Greeting />
-      <Shoes />
+    <div className="flex h-auto w-auto flex-col gap-4 py-24 px-[16vw]">
+      <div>
+        <Greeting />
+      </div>
+      <div className="flex">
+        <Shoes />
+      </div>
     </div>
   );
 };
