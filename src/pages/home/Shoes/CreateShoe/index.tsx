@@ -1,5 +1,7 @@
+import CreateShoeForm from "./CreateShoeForm";
+
 interface CreateShoeProps {
-    setShowModal: (value: React.SetStateAction<boolean>) => void;
+  setShowModal: (value: React.SetStateAction<boolean>) => void;
 }
 
 const CreateShoe: React.FC<CreateShoeProps> = ({ setShowModal }) => {
@@ -17,22 +19,8 @@ const CreateShoe: React.FC<CreateShoeProps> = ({ setShowModal }) => {
                 x
               </button>
             </div>
-            <div className="relative flex-auto p-6">{/*footer*/}</div>
-            <div className="flex items-center justify-end rounded-b border-t border-solid border-stone-500/75 p-6">
-              <button
-                className="background-transparent mr-1 mb-1 px-6 py-2 text-sm font-bold uppercase text-red-500 outline-none transition-all duration-150 ease-linear focus:outline-none"
-                type="button"
-                onClick={() => setShowModal(false)}
-              >
-                Close
-              </button>
-              <button
-                className="mr-1 mb-1 rounded bg-emerald-500 px-6 py-3 text-sm font-bold uppercase text-white shadow outline-none transition-all duration-150 ease-linear hover:shadow-lg focus:outline-none active:bg-emerald-600"
-                type="button"
-                onClick={() => setShowModal(false)}
-              >
-                Save Shoe
-              </button>
+            <div className="relative flex-auto p-6">
+              <CreateShoeForm setShowModal={setShowModal} />
             </div>
           </div>
         </div>
