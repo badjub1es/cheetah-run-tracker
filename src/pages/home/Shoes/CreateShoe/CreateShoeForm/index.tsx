@@ -1,18 +1,20 @@
-import { DistanceUnit } from "@customTypes/DistanceUnit";
 import React from "react";
+import { DistanceUnit } from "@customTypes/DistanceUnit";
+import { HexColorPicker } from "react-colorful";
 
 interface CreateShoeFormProps {
   setShowModal: (value: React.SetStateAction<boolean>) => void;
 }
 
 const CreateShoeForm: React.FC<CreateShoeFormProps> = ({ setShowModal }) => {
+  const [color, setColor] = React.useState("#aabbcc");
   const [shoeName, setShoeName] = React.useState("");
   const [distance, setDistance] = React.useState(0);
   const [distanceUnit, setDistanceUnit] = React.useState<DistanceUnit>("mi");
 
   return (
     <>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3">
         <div>
           <label
             htmlFor="shoe-name"
@@ -38,7 +40,7 @@ const CreateShoeForm: React.FC<CreateShoeFormProps> = ({ setShowModal }) => {
           >
             Distance
           </label>
-          <div className="flex gap-2">
+          <div className="flex justify-around gap-2">
             <input
               type="number"
               id="distance"
@@ -50,7 +52,7 @@ const CreateShoeForm: React.FC<CreateShoeFormProps> = ({ setShowModal }) => {
               className="block w-full rounded-lg border bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-frost focus:outline-none dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
               placeholder="Distance"
             />
-            <div className="cursor-pointer text-white">
+            <div className="flex cursor-pointer flex-col text-white">
               <div
                 onClick={() => setDistanceUnit("mi")}
                 className={`${
@@ -69,6 +71,15 @@ const CreateShoeForm: React.FC<CreateShoeFormProps> = ({ setShowModal }) => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="self-center">
+          <label
+            htmlFor="color-select"
+            className="block text-sm font-medium text-white dark:text-white"
+          >
+            Select color
+          </label>
+          <HexColorPicker id="color-select" color={color} onChange={setColor} />
         </div>
       </div>
       <div className="flex items-center justify-end rounded-b px-4 pt-4">
