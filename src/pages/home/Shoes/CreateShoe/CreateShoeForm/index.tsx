@@ -1,6 +1,7 @@
 import React from "react";
 import { DistanceUnit } from "@customTypes/DistanceUnit";
 import { HexColorPicker } from "react-colorful";
+import { trpc } from "utils/trpc";
 
 interface CreateShoeFormProps {
   setShowModal: (value: React.SetStateAction<boolean>) => void;
@@ -11,6 +12,12 @@ const CreateShoeForm: React.FC<CreateShoeFormProps> = ({ setShowModal }) => {
   const [shoeName, setShoeName] = React.useState("");
   const [distance, setDistance] = React.useState(0);
   const [distanceUnit, setDistanceUnit] = React.useState<DistanceUnit>("mi");
+  
+  const createShoe = trpc.shoes.createShoe.useMutation();
+
+  const handleSubmit = () => {
+    createShoe.mutate({ shoe: shoeName, distance, color });
+  };
 
   return (
     <>
@@ -93,7 +100,7 @@ const CreateShoeForm: React.FC<CreateShoeFormProps> = ({ setShowModal }) => {
         <button
           className="mr-1 mb-1 rounded bg-emerald-500 px-6 py-3 text-sm font-bold uppercase text-white shadow outline-none transition-all duration-150 ease-linear hover:shadow-lg focus:outline-none active:bg-emerald-600"
           type="button"
-          onClick={() => setShowModal(false)}
+          onClick={() => handleSubmit()}
         >
           Save Shoe
         </button>
