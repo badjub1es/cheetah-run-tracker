@@ -12,17 +12,28 @@ const CreateShoeForm: React.FC<CreateShoeFormProps> = ({ setShowModal }) => {
   const [shoeName, setShoeName] = React.useState("");
   const [distance, setDistance] = React.useState(0);
   const [distanceUnit, setDistanceUnit] = React.useState<DistanceUnit>("mi");
-  
+
   const createShoe = trpc.shoes.createShoe.useMutation();
 
   const handleSubmit = () => {
     createShoe.mutate({ shoe: shoeName, distance, color });
   };
 
+  React.useEffect(() => {
+    if (createShoe.isSuccess) {
+      setShowModal(false);
+    }
+  }, [createShoe]);
+
   return (
     <>
       <div className="flex flex-col gap-3">
         <div>
+          {createShoe.error && (
+            <p className="text-red-500">
+              Something went wrong! {createShoe.error.message}
+            </p>
+          )}
           <label
             htmlFor="shoe-name"
             className="block text-sm font-medium text-white dark:text-white"
@@ -33,12 +44,14 @@ const CreateShoeForm: React.FC<CreateShoeFormProps> = ({ setShowModal }) => {
             type="text"
             id="shoe-name"
             value={shoeName}
+            maxLength={30}
             // onKeyDown={handleSubmit}
             onChange={(e) => setShoeName(e.target.value)}
             className="block w-full rounded-lg border bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-frost focus:outline-none dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
             placeholder="Shoe name*"
             required
           />
+          <p className="text-sm text-white">Max characters: 30</p>
         </div>
         <div>
           <label
